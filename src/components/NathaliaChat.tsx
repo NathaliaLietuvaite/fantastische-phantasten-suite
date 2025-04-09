@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Message, MessageSquare, Send } from "lucide-react";
+import { MessageSquare, Send } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { toast } from "@/components/ui/use-toast";
 
