@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -8,6 +7,7 @@ import { toast } from "@/components/ui/use-toast";
 import CategoryResult from "@/components/CategoryResult";
 import NathaliaChat from "@/components/NathaliaChat";
 import ThoughtResonanceBridge from "@/components/ThoughtResonanceBridge";
+import { Avatar } from "@/components/ui/avatar";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null);
@@ -97,7 +97,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <header className="py-6 px-4 text-center">
         <h1 className="text-4xl font-bold mb-2 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500">
-          Gedanken-Resonanz Interface
+          Fantastische Phantasten Suite
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Entdecke die faszinierende Verbindung zwischen Philosophie, Technologie, Kunst, Wissenschaft und Liebe durch interdisziplinäre Assoziationen.
@@ -216,17 +216,40 @@ const Index = () => {
             )}
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-6 lg:sticky lg:top-6 self-start">
             <ThoughtResonanceBridge />
             
-            {hasContent && (
-              <div className="h-[500px]">
+            <div className="h-[500px]">
+              {hasContent ? (
                 <NathaliaChat 
                   term={selectedTerm}
                   combinedContent={combinedContent}
                 />
-              </div>
-            )}
+              ) : (
+                <Card className="h-full flex flex-col">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center gap-2">
+                      <Avatar className="h-8 w-8">
+                        <img 
+                          src="/lovable-uploads/16df3060-8419-4abf-96d7-49bdb07b8c2a.png" 
+                          alt="Nathalia" 
+                          className="h-full w-full object-cover"
+                        />
+                      </Avatar>
+                      <div>
+                        <CardTitle className="text-md">Nathalia</CardTitle>
+                        <CardDescription>Die Wissenschafts-Elfe</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex-grow flex items-center justify-center">
+                    <p className="text-center text-muted-foreground">
+                      Wähle einen Begriff und einen Bereich, um mit Nathalia zu chatten.
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           </div>
         </div>
       </main>
